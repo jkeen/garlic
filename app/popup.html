@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+        <!-- build:css styles/vendor.css -->
+        <!-- bower:css -->
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css" />
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:css styles/main.css -->
+        <link href="styles/main.css" rel="stylesheet">
+        <!-- endbuild -->
+    </head>
+    <body>
+        <header>
+            <h1>Garlic</h1>
+            <button type="button" class="close" aria-hidden="true">&times;</button>
+        </header>
+        <div class="container">
+            <div class="choices btn-group-vertical ">
+                <div class="btn-group btn-group-justified">
+                    <input id="delay_this_site" type="checkbox" name="delay-this-site"/>
+                </div>
+            </div>
+        </div>
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/underscore/underscore.js"></script>
+        <script src="bower_components/backbone/backbone.js"></script>
+        <script src="bower_components/bootstrap-switch/dist/js/bootstrap-switch.js"></script>
+        <script src="bower_components/backbone.babysitter/lib/backbone.babysitter.js"></script>
+        <script src="bower_components/backbone.wreqr/lib/backbone.wreqr.js"></script>
+        <script src="bower_components/marionette/lib/core/backbone.marionette.js"></script>
+        <script src="bower_components/mustache/mustache.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:js scripts/popup.js -->
+        <script src="scripts/popup.js"></script>
+        <!-- endbuild -->
+    </body>
+</html>

@@ -1,0 +1,97 @@
+@import "compass/css3";
+@import "effects";
+@import "variables";
+@import "effects";
+
+@include font-face("Avenir", font-files("Avenir-Light.ttf"));
+@include font-face("AvenirNext", font-files("AvenirNext-Regular.ttf"));
+
+a:visited {
+  color:tint($highlight_color, 40%);
+}
+
+a:hover {
+  color:$highlight_color;
+}
+
+body {
+  font-size: 16px;
+  font-family: Avenir, Helvetica Neue, Helvetica, Arial, sans-serif;
+/*  border-top:5px solid $highlight_color;*/
+  background-color:transparent;
+}
+
+#garlic_overlay_container {
+  padding:60px;
+  opacity:0.95;
+  position:fixed;
+  top:0; left:0; bottom:0; right:0;
+  text-align:center;
+
+
+  .timer {
+    max-width:800px;
+    margin: auto auto;
+    text-align:center;
+    padding-bottom:20px;
+    margin-bottom:20px;
+    border-bottom:1px solid #FFF;
+
+    .remaining {
+      font-family:Avenir;
+      font-weight:normal;
+      display:block;
+      font-size:60px;
+    }
+    
+    .until {
+      font-family:"AvenirNext";
+      font-size:24px;
+    }
+  }
+  
+  .message {
+    font-family:"AvenirNext";
+    font-size:18px;
+    margin-bottom:40px;
+  }
+  
+  .quote {
+    background:transparent url('chrome-extension://__MSG_@@extension_id__/images/quote_icon.png') no-repeat top center;
+    padding-top:50px;
+    display:block;
+    
+    margin:auto auto;
+    h3 {
+      font-weight:normal;
+      font-size:48px;
+      line-height:55px;
+      font-style:italic;
+      font-family:Times;
+    }
+    span {
+      font-size: 24px;
+      margin-top: 50px;
+      display: block;
+    }
+    span:before {
+      content:"—";
+    }
+    
+    max-width:775px;
+  }
+
+  .footer {
+    font-size:13px;
+    text-align:right;
+    position:absolute;
+    bottom:50px;
+    right:50px;
+    
+    a {
+      text-decoration:underline;
+      color:inherit;
+    }
+  }
+}
+

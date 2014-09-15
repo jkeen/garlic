@@ -1,0 +1,83 @@
+{
+  "any": {
+    "backgroundColor": "#EEE",
+    "borderColor": "#068cbf",
+    "textColor": "#333",
+    "messages": [
+      {
+        "text": "Is this really what you want to be doing?"
+      }
+    ],
+    "quotes": [
+      {
+        "text": "You'll become known for doing what you do. It's a simple saying, but it's true...The only way to start being asked to do something you want to do is to start doing that thing on your own",
+        "author": "Jonathan Harris"
+      },
+      {
+        "text": "Whenever you are asked if you can do a job, tell 'em, 'Certainly I can!' Then get busy and find out how to do it.",
+        "author": "Theodore Roosevelt"
+      },
+      {
+        "text": "Amateurs sit and wait for inspiration, the rest of us just get up and go to work.",
+        "author": "Stephen King"
+      },
+      {
+        "text": "Concentrate all your thoughts upon the work in hand. The Sun's rays do not burn until brought to a focus",
+        "author": "Alexander Graham Bell"
+      },
+      {
+        "text": "Nothing is less productive than to make more efficient what should not be done at all.",
+        "author": "Peter Drucker"
+      },
+      {
+        "text": "Fear of what other people will think is the single most paralyzing dynamic in business and in life. The best moment of my life…was the day I realized that I no longer give a damn what anybody thinks. That’s enormously liberating and freeing, and it’s the only way to live your life and do your business.",
+        "author": "Cindy Gallop"
+      },
+      {
+        "text": "If you don’t pay appropriate attention to what has your attention, it will take more of your attention than it deserves.",
+        "author": "David Allen"
+      },
+      {
+        "text": "There's no substitute for hard work.",
+        "author": "Thomas Edison"
+      },
+      {
+        "text": "Either write something worth reading or do something worth writing.",
+        "author": "Benjamin Franklin"
+      },
+      {
+        "text": "Action is the foundational key to all success.",
+        "author": "Pablo Picasso"
+      },
+      {
+        "text": "While one person hesitates because he feels inferior, the other is busy making mistakes and becoming superior.",
+        "autor": "Henry C. Link"
+      }
+    ],
+    "textColor": "#FFFFFF"
+  },
+  "facebook.com": {
+    "backgroundColor": "#4F4F4F",
+    "messages": [
+      {
+        "text": "Think about this while before you see how many likes your status update got"
+      }
+    ]
+  },
+  "reddit.com": {
+    "backgroundColor":"#cee3f8"
+  },
+  "news.ycombinator.com": {
+    
+  },
+  "twitter.com": {
+    "backgroundColor": "#03a9e9",
+    "borderColor": "#068cbf",
+    "messages": [
+      {
+        "text": "Think about this while you're waiting for your tweets\u2026"
+      }
+    ],
+    "quotes": []
+  }
+}

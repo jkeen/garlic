@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+    <head>
+        <!-- build:css styles/vendor.css -->
+        <!-- bower:css -->
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css" />
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:css styles/overlay.css -->
+        <link href="styles/overlay.css" rel="stylesheet">
+        <!-- endbuild -->
+    </head>
+    <body>
+        <div class="surrounding-borders">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="container">
+            
+        </div>
+        
+        <script type="x-tmpl-mustache" id="app_template">
+            <div id="timer_region">
+            
+            </div>
+            <div id="message_region">
+                
+            </div>
+
+            <div id="quote_region">
+                
+            </div>
+
+            <div class="footer">
+                <a href="http://tbd.works">TBD</a> wants you stay productive.
+            </div>
+        </script>
+        
+        <script id="timer_template" type="x-tmpl-mustache">
+            <img src="../images/garlic_logo_white.png"></img>
+            
+            <time class='remaining'></time>
+            
+            <div class="until">until {{ site_url }}</div>
+        </script>
+        <script id="message_template" type="x-tmpl-mustache">
+            <p>{{ text }}</p>
+        </script>
+        <script id="quote_template" type="x-tmpl-mustache">
+            <h3>{{text}}</h3>
+            <span>{{ author }}</span>
+        </script>
+        
+        
+
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/underscore/underscore.js"></script>
+        <script src="bower_components/backbone/backbone.js"></script>
+        <script src="bower_components/bootstrap-switch/dist/js/bootstrap-switch.js"></script>
+        <script src="bower_components/backbone.babysitter/lib/backbone.babysitter.js"></script>
+        <script src="bower_components/backbone.wreqr/lib/backbone.wreqr.js"></script>
+        <script src="bower_components/marionette/lib/core/backbone.marionette.js"></script>
+        <script src="bower_components/mustache/mustache.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- templates -->
+
+
+        <!-- build:js scripts/overlay.js -->
+        <script src="scripts/app/setup.js"></script>
+        <script src="scripts/app/app.js"></script>
+        <script src="scripts/app/models.js"></script>
+        <script src="scripts/app/views.js"></script>
+        <script src="scripts/app/initialize.js"></script>
+        <!-- endbuild -->
+    </body>
+</html>
