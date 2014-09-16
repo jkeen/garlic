@@ -2,3 +2,5 @@ node_modules
 .DS_Store
 .sass-cache
 .tmp
+app/styles/*.css
+app/bower_components

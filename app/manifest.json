@@ -1,6 +1,6 @@
 {
     "name": "__MSG_appName__",
-    "version": "0.0.8",
+    "version": "0.0.10",
     "manifest_version": 2,
     "description": "__MSG_appDescription__",
     "icons": {
@@ -10,7 +10,9 @@
     "default_locale": "en",
     "background": {
         "scripts": [
+            "scripts/data.json",
             "scripts/jquery.min.js",
+            "scripts/underscore-min.js",
             "scripts/chromereload.js",
             "scripts/background.js"
         ]
@@ -33,14 +35,19 @@
                 "styles/main.css"
             ],
             "js": [
-                "scripts/contentscript.js",
-                "scripts/data.json"
+                "scripts/contentscript.js"
             ],
             "run_at": "document_end",
             "all_frames": false
         }
     ],
-    "web_accessible_resources" : ["popup.html", "*", "overlay.html", "overlay.css", "styles/fonts/*.*"],
+    "web_accessible_resources": [
+        "popup.html",
+        "*",
+        "overlay.html",
+        "overlay.css",
+        "styles/fonts/*.*"
+    ],
     "permissions": [
         "activeTab",
         "storage",

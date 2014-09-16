@@ -23,12 +23,12 @@ body {
 
 #garlic_overlay_container {
   padding:60px;
-  opacity:0.95;
-  position:fixed;
-  top:0; left:0; bottom:0; right:0;
+  opacity:0.98;
+  position:absolute;
+  top:0; left:0; right:0;
   text-align:center;
-
-
+  overflow:scroll;
+  height:100%;
   .timer {
     max-width:800px;
     margin: auto auto;

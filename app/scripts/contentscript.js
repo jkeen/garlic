@@ -26,7 +26,7 @@ function loadOverlay() {
     
     $frameContainer.appendChild($frame);
     
-    document.body.appendChild($frameContainer);
+    document.body.insertBefore($frameContainer, document.body.firstChild);
     $frameContainer = document.getElementById("tbd_garlic_container");
   }
 }
@@ -52,12 +52,12 @@ function showSettings(settingsUrl) {
   }
   
   window.setTimeout(function() {
-    document.body.setAttribute('tbd-timeout-settings-visible', true);
+    document.body.setAttribute('tbd-garlic-settings-visible', true);
   }, 200)
 }
 
 function toggleSettings(settingsUrl) {
-  (document.body.getAttribute('tbd-timeout-settings-visible') ? hideSettings : showSettings)(settingsUrl);
+  (document.body.getAttribute('tbd-garlic-settings-visible') ? hideSettings : showSettings)(settingsUrl);
 }
 
 function hideOverlay() {
@@ -70,7 +70,7 @@ function hideOverlay() {
 }
 
 function hideSettings() {
-  document.body.removeAttribute('tbd-timeout-settings-visible');
+  document.body.removeAttribute('tbd-garlic-settings-visible');
   
   window.setTimeout(function() {
     $settings = document.getElementById('tbd_garlic_settings_container')
@@ -91,7 +91,7 @@ window.addEventListener("message", function(e) {
     // happens the first time the frame opens up
     document.body.setAttribute('tbd-garlic-active', true);
   }
-  else if (data.action == 'close') {
+  if (data.action == 'close') {
     hideOverlay();
   }
   else if (data.action == 'closeSettings') {
@@ -113,8 +113,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 });
 
 // Initialization sequence
-chrome.runtime.sendMessage({action: "isPageBlocked"}, function(pageIsBlocked) {
-  if (pageIsBlocked) {
+chrome.runtime.sendMessage({action: "getPageInfo"}, function(response) {
+  if (response.blocked) {
     chrome.runtime.sendMessage({action: "showDelay"}, function(data) {
       $frameUrl     = data.frame_url;
       $pageUrl      = data.page_url;

@@ -3,25 +3,32 @@ body {
     padding: $padding;
 }
 
-body[tbd-timeout-settings-visible] > div:not(#tbd_garlic_settings_container) {
+body[tbd-garlic-settings-visible] > div:not(#tbd_garlic_settings_container) {
 /*  -webkit-filter: blur(3px);*/
 }
 
-
 #tbd_garlic_settings_container {
-  background-color: transparent;
+  background-color: #262626;
   position:fixed;
+  
   top:15px;
-  right:15px;
+  right:-150px;
+
   z-index: 2147483647!important;
-  height: 400px;
   width: 320px;
+  height: 320px;
   opacity:0;
-  -webkit-transition: opacity 0.1s linear;
+  
+  box-shadow: -3px 3px 5px #333;
+  -webkit-transition: opacity 0.3s linear, top 0.2s ease-in, right 0.2s ease-in;
+  transition: opacity 0.3s linear, top 0.2s ease-in, right 0.2s ease-in;
 }
 
-body[tbd-timeout-settings-visible] #tbd_garlic_settings_container{
+body[tbd-garlic-settings-visible] #tbd_garlic_settings_container{
   opacity:1;
+  
+  top:15px;
+  right:15px;
 }
 
 #tbd_garlic_settings {

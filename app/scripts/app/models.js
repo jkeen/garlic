@@ -1,5 +1,36 @@
 App.module("Entities", function(Entities, App, Backbone, Marionette, $, _){
-  Entities.Quote = Backbone.Model.extend({
+  var BaseModel = Backbone.Model.extend({ 
+    defaults: {
+      seen: undefined
+    },
+    markSeen: function() {
+      this.set({seen: new Date().getTime()});
+    }
+  });
+
+  var BaseCollection = Backbone.Collection.extend({ 
+    getNextUnseen: function() {
+      var result = this.findWhere({seen: undefined});
+      
+      if (result) result.markSeen();
+      
+      return result;
+    },
+    
+    comparator: function(m) {
+      if (!m.get('seen')) {
+        return 0
+      }
+      
+      return m.get('seen');
+    },
+    
+    getOldestSeen: function() {
+      return this.sort().at(0);
+    }
+  });
+  
+  Entities.Quote = BaseModel.extend({
     defaults: {
       site: "", // optional
       message: "",
@@ -7,18 +38,18 @@ App.module("Entities", function(Entities, App, Backbone, Marionette, $, _){
     }
   });
 
-  Entities.Message = Backbone.Model.extend({
+  Entities.Message = BaseModel.extend({
     defaults: {
       site: "", // optional
       message: ""
     }
-  })
+  });
 
-  Entities.Quotes = Backbone.Collection.extend({
+  Entities.Quotes = BaseCollection.extend({
     model: Entities.Quote
   });
   
-  Entities.Messages = Backbone.Collection.extend({
+  Entities.Messages = BaseCollection.extend({
     model: Entities.Message
   });
 });

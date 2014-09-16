@@ -7,20 +7,29 @@
         <link rel="stylesheet" href="bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css" />
         <!-- endbower -->
         <!-- endbuild -->
-        <!-- build:css styles/main.css -->
-        <link href="styles/main.css" rel="stylesheet">
+        <!-- build:css styles/popup.css -->
+        <link href="styles/popup.css" rel="stylesheet">
         <!-- endbuild -->
     </head>
     <body>
         <header>
-            <h1>Garlic</h1>
+            <div class="logo">
+                <h2>Garlic</h2>
+                <h5>Protection from time vampires.</h5>
+            </div>
+            
             <button type="button" class="close" aria-hidden="true">&times;</button>
         </header>
         <div class="container">
             <div class="choices btn-group-vertical ">
-                <div class="btn-group btn-group-justified">
+                Add a 15 second time delay for: <span class='site-url'></span>
+                
+                <div class="activate-switch btn-group btn-group-justified">
                     <input id="delay_this_site" type="checkbox" name="delay-this-site"/>
                 </div>
+            </div>
+            <div class="footer">
+                Put the sites that waste your time in their place. Brought to you by <a href="http://tbd.works">TBD &amp; Co</a>
             </div>
         </div>
         <!-- build:js scripts/vendor.js -->
@@ -34,6 +43,7 @@
         <script src="bower_components/backbone.wreqr/lib/backbone.wreqr.js"></script>
         <script src="bower_components/marionette/lib/core/backbone.marionette.js"></script>
         <script src="bower_components/mustache/mustache.js"></script>
+        <script src="bower_components/tinycolor/tinycolor.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 

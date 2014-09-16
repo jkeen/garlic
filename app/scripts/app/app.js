@@ -1,7 +1,7 @@
 var App = new Backbone.Marionette.Application();
 
 App.addRegions({
-  "mainRegion": ".container",
+  "mainRegion": ".container"
 });
 
 /* Helpers
@@ -14,81 +14,107 @@ App.getSiteUrl = function(url) {
   return parser.hostname.replace(/^www\./, ""); 
 }
 
+App.chooseMessages = function(site, siteSettings, defaultSettings) {
+  var Entities        = App.module("Entities");
+  
+  if (!siteSettings) siteSettings = {}
+  
+  var SiteQuotes      = new Entities.Quotes(siteSettings.quotes);
+  var SiteMessages    = new Entities.Messages(siteSettings.messages);
+
+  var DefaultQuotes   = new Entities.Quotes(defaultSettings.quotes);
+  var DefaultMessages = new Entities.Messages(defaultSettings.messages);
+
+
+  // Set so we know what collection this is when we need to save it.
+  SiteQuotes.site     = site;
+  SiteMessages.site   = site;
+
+  var quote   = SiteQuotes.getNextUnseen() || DefaultQuotes.getNextUnseen() || SiteQuotes.getOldestSeen() || DefaultQuotes.getOldestSeen()
+  var message = SiteMessages.getNextUnseen() || DefaultMessages.getNextUnseen() || SiteMessages.getOldestSeen() || DefaultMessages.getOldestSeen()
+
+  return {
+    message: message,
+    quote: quote
+  }
+}
+
 /* Reqres
 ------------------------------------------------------------------------------------------------------ */
 
-// Colors, etc
-App.reqres.setHandler("siteSettings", function(options) {
+// Return site colors, the best message, and the best quote for this site.
+App.reqres.setHandler("loadPageSettings", function(options) {
   var request = $.Deferred();
-  var page = App.getSiteUrl(options.page_url)
-  
-  $.getJSON( chrome.extension.getURL('/scripts/data.json'), function(data) {
-    var settings;
-    
-    if (data[page]) {
-      var quotes   = data.any.quotes.concat(data[page].quotes);
-      var messages = data.any.messages.concat(data[page].messages);
-      settings = _.extend(data.any, data[page]);
+  var siteUrl = App.getSiteUrl(options.page_url);
 
-      settings.quotes = quotes;
-      settings.messages = messages
+  chrome.runtime.sendMessage({action: 'getData', data: ['default', siteUrl]}, function(response) {
+    var appearance = {};
+    var attrs = ["backgroundColor", "borderColor", "textColor"];
+    var defaultAppearance = _.pick(response.default, attrs);
+    
+    if (response[siteUrl]) {
+      appearance = _.extend(defaultAppearance, _.pick(response[siteUrl], attrs));
     }
     else {
-      settings = data.any;
+      appearance = defaultAppearance;
     }
-    request.resolve(settings)
-  })
+    
+    messages = App.chooseMessages(siteUrl, response[siteUrl], response.default)
+    
+    var results = {
+      appearance: appearance,
+      message: messages.message,
+      quote: messages.quote,
+      site_url: siteUrl
+    }
+      
+    request.resolve(results);
+
+    // Mark the items as seen and save them
+    messages.message.markSeen();
+    messages.quote.markSeen();
+    
+    var messageCollection = messages.message.collection;
+    var quoteCollection = messages.quote.collection;
+    
+    var settings;
+    settings = messageCollection.site ? response[siteUrl] : response.default
+    settings.messages = messageCollection.toJSON();
+
+    settings = quoteCollection.site ? response[siteUrl] : response.default
+    settings.quotes = quoteCollection.toJSON();
+
+    chrome.runtime.sendMessage({action: 'saveData', data: response}, function() {
+      console.log('saved updated stuff')
+    })
+  });
   
   return request;
 });
-
-
-App.reqres.setHandler("siteMessages", function(options) {
-  var request = $.Deferred();
-  var page = App.getSiteUrl(options.page_url)
-  
-  $.getJSON( chrome.extension.getURL('/scripts/data.json'), function(data) {
-    var settings;
-    
-    if (data[page]) {
-      var quotes   = data.any.quotes.concat(data[page].quotes);
-      var messages = data.any.messages.concat(data[page].messages);
-      settings = _.extend(data.any, data[page]);
-
-      settings.quotes = quotes;
-      settings.messages = messages
-    }
-    else {
-      settings = data.any;
-    }
-    request.resolve(settings)
-  })
-  
-  return request;
-});
-
 
 /* Startup
 ------------------------------------------------------------------------------------------------------ */
 
+App.mainRegion.attachHtml = function(view) {
+  this.$el.empty().append(view.el);
+  this.$el.hide().fadeIn('fast');
+}
+
 App.on("start", function(options) {
-  loadSettings = App.request('siteSettings', options)
+  var Views    = App.module('Views');
+
+  loadSettings = App.request('loadPageSettings', options);
   
   loadSettings.done(function(settings) {
-    App.settings = settings;
+    var AppView  = new Views.App({settings: settings.appearance});
     
-    var Views    = App.module('Views');
-    var Entities = App.module("Entities");
-  
-    var Messages = new Entities.Messages(settings.messages);
-    var Quotes   = new Entities.Quotes(settings.quotes);
-    var AppView  = new Views.App();
+    $(".surrounding-borders").css({'border-color': tinycolor(settings.appearance.backgroundColor).lighten().desaturate().toHexString()});
+    $(".surrounding-borders div").css({'background-color': settings.appearance.backgroundColor });
     
     AppView.on("before:show", function() {
-      AppView.timerRegion.show( new Views.Timer({model: new Backbone.Model({site_url: App.getSiteUrl(options.page_url) }) }) );
-      
-      AppView.quoteRegion.show( new Views.Quote({ model: Quotes.at(0) }) );
-      AppView.messageRegion.show(new Views.Message({ model: Messages.at(0) }));
+      AppView.timerRegion.show(  new Views.Timer({site_url: settings.site_url }) );
+      AppView.quoteRegion.show(  new Views.Quote({ model: settings.quote }) );
+      AppView.messageRegion.show(new Views.Message({ model: settings.message }));
       
       var defaultTimeout = 15 * 1000;
       App.trigger("start:timer", defaultTimeout);
@@ -102,7 +128,7 @@ App.on("start", function(options) {
 ------------------------------------------------------------------------------------------------------ */
 
 App.on("start:timer", function(total) {
-  var interval = 100;
+  var interval = 1000;
   var remaining = total;
   
   $("body").attr('data-time_total', total)
@@ -128,5 +154,11 @@ App.on("start:timer", function(total) {
 
 App.on("clock:zero", function(data) {
   window.clearInterval(this.clock);
-  // window.parent.postMessage({action: 'close'}, '*');
+  
+  window.setTimeout(function() {
+    App.mainRegion.$el.fadeOut('slow');
+    window.parent.postMessage({action: 'close'}, '*');
+    
+  },500)
+  
 });

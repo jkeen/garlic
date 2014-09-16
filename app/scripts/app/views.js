@@ -1,17 +1,23 @@
 App.module("Views", function(Views, App, Backbone, Marionette, $, _){
   Views.App = Marionette.LayoutView.extend({
     template: "#app_template",
+    
     id: "garlic_overlay_container",
+    
     regions: {
       "timerRegion": "#timer_region",
       "messageRegion": "#message_region",
       "quoteRegion": "#quote_region"
     },
     
-    onRender: function() {
+    initialize: function(options) {
+      this.settings = options.settings;
+    },
+    
+    onShow: function() {
       this.$el.css({
-        "background-color": App.settings.backgroundColor,
-        "color": App.settings.textColor
+        "background-color": this.settings.backgroundColor,
+        "color": this.settings.textColor
       });
     }
   });
@@ -33,8 +39,15 @@ App.module("Views", function(Views, App, Backbone, Marionette, $, _){
   
     className: 'timer',
     
-    initialize: function() {
+    initialize: function(options) {
       this.listenTo(App, "clock:tick", this.updateClock);
+      this.options = options
+    },
+    
+    serializeData: function() {
+      return {
+        site_url: this.options.site_url
+      }
     },
   
     updateClock: function(data) {

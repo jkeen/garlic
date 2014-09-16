@@ -1,83 +1,99 @@
-{
-  "any": {
-    "backgroundColor": "#EEE",
+window._defaultData = { "default": {
+    "backgroundColor": "#333333",
     "borderColor": "#068cbf",
-    "textColor": "#333",
+    "textColor": "#FFFFFF",
     "messages": [
       {
+        "id": 1,
         "text": "Is this really what you want to be doing?"
       }
     ],
     "quotes": [
       {
+        "id": 1,
         "text": "You'll become known for doing what you do. It's a simple saying, but it's true...The only way to start being asked to do something you want to do is to start doing that thing on your own",
         "author": "Jonathan Harris"
       },
       {
+        "id": 2,
         "text": "Whenever you are asked if you can do a job, tell 'em, 'Certainly I can!' Then get busy and find out how to do it.",
         "author": "Theodore Roosevelt"
       },
       {
+        "id": 3,
         "text": "Amateurs sit and wait for inspiration, the rest of us just get up and go to work.",
         "author": "Stephen King"
       },
       {
+        "id": 4,
         "text": "Concentrate all your thoughts upon the work in hand. The Sun's rays do not burn until brought to a focus",
         "author": "Alexander Graham Bell"
       },
       {
+        "id": 5,
         "text": "Nothing is less productive than to make more efficient what should not be done at all.",
         "author": "Peter Drucker"
       },
       {
+        "id": 6,
         "text": "Fear of what other people will think is the single most paralyzing dynamic in business and in life. The best moment of my life…was the day I realized that I no longer give a damn what anybody thinks. That’s enormously liberating and freeing, and it’s the only way to live your life and do your business.",
         "author": "Cindy Gallop"
       },
       {
+        "id": 7,
         "text": "If you don’t pay appropriate attention to what has your attention, it will take more of your attention than it deserves.",
         "author": "David Allen"
       },
       {
+        "id": 8,
         "text": "There's no substitute for hard work.",
         "author": "Thomas Edison"
       },
       {
+        "id": 9,
         "text": "Either write something worth reading or do something worth writing.",
         "author": "Benjamin Franklin"
       },
       {
+        "id": 10,
         "text": "Action is the foundational key to all success.",
         "author": "Pablo Picasso"
       },
       {
+        "id": 11,
         "text": "While one person hesitates because he feels inferior, the other is busy making mistakes and becoming superior.",
-        "autor": "Henry C. Link"
+        "author": "Henry C. Link"
       }
     ],
     "textColor": "#FFFFFF"
   },
   "facebook.com": {
-    "backgroundColor": "#4F4F4F",
+    "backgroundColor": "#394F8D",
     "messages": [
       {
-        "text": "Think about this while before you see how many likes your status update got"
+        "id": 1,
+        "text": "Honestly though, when was the last time this site brought you JOY?"
+      },
+      {
+        "id": 2,
+        "text": "If you didn't see this for a week, would it matter?"
       }
     ]
   },
   "reddit.com": {
-    "backgroundColor":"#cee3f8"
+    "backgroundColor":"#cee3f8",
+    "textColor":"#333333"
   },
   "news.ycombinator.com": {
-    
+    "backgroundColor": "#FF6600",
+    "textColor": "#FFF"
   },
   "twitter.com": {
     "backgroundColor": "#03a9e9",
-    "borderColor": "#068cbf",
     "messages": [
       {
         "text": "Think about this while you're waiting for your tweets\u2026"
       }
     ],
-    "quotes": []
   }
 }

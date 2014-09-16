@@ -1,9 +1,49 @@
 'use strict';
 
-var blockedPages, pageVisits;
+var _blockedPages, _pageVisits, _data;
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  handleMessage(request, sender.tab, sendResponse);
+  var tab = sender.tab;
+  
+  if (request.action === 'showDelay') {
+    var visits   = _pageVisits[ getSiteUrl(tab.url) ];
+    var frameUrl = chrome.extension.getURL("overlay.html");
+    var pageUrl  = tab.url;
+    sendResponse({ frame_url: frameUrl, page_url: pageUrl, visit_history: visits });
+    logPageVisit(tab.url);
+    updateIcon(true)
+  }
+
+  else if (request.action === 'getPageInfo') {
+    // sent from popup not from content window, so we have to query still
+    var blocked = isPageBlocked(tab.url);
+    updateIcon(blocked)
+    
+    sendResponse({blocked: blocked, site_url: getSiteUrl(tab.url)});
+  }
+  
+  else if (request.action === 'blockSite') {
+    blockPage(tab.url);
+    updateIcon(true)
+    sendResponse(request);
+  }
+
+  else if (request.action === 'allowSite') {
+    allowPage(tab.url);
+    updateIcon(false)
+    sendResponse(request);
+  }
+  
+  else if (request.action === 'getData') {
+    sendResponse(_.pick(_data, request.data));
+  }
+  
+  else if (request.action === 'saveData') {
+    _data = _.extend(_data, request.data);
+
+    sendResponse(_data);
+  }
+  
 });
 
 chrome.browserAction.onClicked.addListener(function actionClicked(tab) {
@@ -25,7 +65,6 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
    }
  });
 
-
 chrome.tabs.onActivated.addListener(function(data) {
   chrome.tabs.get(data.tabId, function(tab) {
     var blocked = isPageBlocked(tab.url);
@@ -33,84 +72,51 @@ chrome.tabs.onActivated.addListener(function(data) {
   });
 });
 
-chrome.runtime.onInstalled.addListener(function (details) {
-  $.getJSON( chrome.extension.getURL('/scripts/data.json'), function(data) {
-    chrome.storage.sync.set(data, function() {
-      console.log("stored initial json file")
-    })
-  });
-  
-  console.log('previousVersion', details.previousVersion);
-});
-
-function handleMessage(request, tab, sendResponse) {
-  if (request.action == 'showDelay') {
-    var visits = pageVisits[ getSiteUrl(tab.url) ];
-    var frameUrl = chrome.extension.getURL("overlay.html");
-    var pageUrl = tab.url;
-    sendResponse({ frame_url: frameUrl, page_url: pageUrl, visit_history: visits });
-    logPageVisit(tab.url);
-    updateIcon(true)
-  }
-
-  else if (request.action == 'isPageBlocked') {
-    // sent from popup not from content window, so we have to query still
-    var blocked = isPageBlocked(tab.url);
-    updateIcon(blocked)
-    sendResponse(blocked);
-  }
-  
-  else if (request.action == 'saveSettings') {
-    if (request.data.delay_active) {
-      blockPage(tab.url);
-      updateIcon(true)
-    }
-    else {
-      allowPage(tab.url);
-      updateIcon(false)
-    }
-    
-    sendResponse(request.data);
-  }
-}
-
+// chrome.runtime.onInstalled.addListener(function (details) {
+//   $.getJSON( chrome.extension.getURL('/scripts/data.json'), function(data) {
+//     _data = data;
+//
+//
+//     // chrome.storage.sync.set(data, function() {
+//     //   console.log("stored initial json file")
+//     // })
+//   });
+//
+//   console.log('previousVersion', details.previousVersion);
+// });
 
 function updateIcon(active) {
   chrome.browserAction.setIcon({path : (active? 'images/icon_on.png' : 'images/icon_off.png')});
 }
 
 function isPageBlocked(pageUrl) {
-  return blockedPages[getSiteUrl(pageUrl)];
+  if (pageUrl && pageUrl.match(/oauth/)) {
+    return false;
+  }
+  
+  return _blockedPages[getSiteUrl(pageUrl)];
 }
 
 function logPageVisit(pageUrl) {
-  var visits = pageVisits[getSiteUrl(pageUrl)];
+  var visits = _pageVisits[getSiteUrl(pageUrl)];
   if (!visits) visits = [];
   visits.push(new Date());
 
-  pageVisits[getSiteUrl(pageUrl)] = visits;
-
-  chrome.storage.sync.set({'pageVisits': pageVisits}, function() {
-    console.log("saved page visits pages");
-  });
+  _pageVisits[getSiteUrl(pageUrl)] = visits;
 }
 
 function blockPage(pageUrl) {
-  var u = getSiteUrl(pageUrl);
-  
-  blockedPages[u] = true;
+  _blockedPages[ getSiteUrl(pageUrl) ] = true;
   saveBlockedPages();
 }
 
 function allowPage(pageUrl) {
-  var u = getSiteUrl(pageUrl);
-  
-  delete blockedPages[u];
+  delete _blockedPages[ getSiteUrl(pageUrl) ];
   saveBlockedPages();
 }
 
 function saveBlockedPages() {
-  chrome.storage.sync.set({'blockedPages': blockedPages}, function() {
+  chrome.storage.sync.set({'_blockedPages': _blockedPages}, function() {
     console.log("saved blocked pages");
   });
 }
@@ -132,22 +138,34 @@ function getSiteUrl(url) {
 
 chrome.browserAction.setBadgeText({text: ''});
 
+
+
+// This happens when the extension first loads
 function load() {
-  chrome.storage.sync.get(['blockedPages', 'pageVisits'], function(pages, visits) {
+  // $.getJSON( chrome.extension.getURL('/scripts/data.json'), function(data) {
+    _data = window._defaultData;
+    
+    
+    // chrome.storage.sync.set(data, function() {
+    //   console.log("stored initial json file")
+    // })
+  // });
   
-    if (typeof blockedPages == 'undefined') {
-      blockedPages = {};
+  chrome.storage.sync.get(['_blockedPages', '_pageVisits', '_messageHistory'], function(response) {
+  
+    if (typeof response._blockedPages == 'undefined') {
+      _blockedPages = {};
     }
     else {
-      blockedPages = JSON.parse(pages);
+      _blockedPages = response._blockedPages;
     }
     
   
-    if (typeof pageVisits == 'undefined') {
-      pageVisits = {};
+    if (typeof response._pageVisits == 'undefined') {
+      _pageVisits = {};
     }
     else {
-      pageVisits = JSON.parse(visits);
+      _pageVisits = response._pageVisits;
     }
   });
 }
