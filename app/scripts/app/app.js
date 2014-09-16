@@ -14,6 +14,19 @@ App.getSiteUrl = function(url) {
   return parser.hostname.replace(/^www\./, ""); 
 }
 
+App.setColors = function(settings) {
+  var appearance = settings.appearance;
+
+  // have to have different variables because lighten and darken calls are destructive
+  var c = tinycolor(appearance.backgroundColor);
+  var c2 = tinycolor(appearance.backgroundColor);
+  var borderColor           = c.isLight() ? c.darken() : c.lighten();
+  var backgroundBorderColor = c2.isLight() ? c2.lighten() : c2.darken();
+  
+  $(".surrounding-borders").css({'border-color': backgroundBorderColor.toHexString() });
+  $(".surrounding-borders div").css({'background-color': borderColor.toHexString() });
+}
+
 App.chooseMessages = function(site, siteSettings, defaultSettings) {
   var Entities        = App.module("Entities");
   
@@ -108,9 +121,8 @@ App.on("start", function(options) {
   loadSettings.done(function(settings) {
     var AppView  = new Views.App({settings: settings.appearance});
     
-    $(".surrounding-borders").css({'border-color': tinycolor(settings.appearance.backgroundColor).lighten().desaturate().toHexString()});
-    $(".surrounding-borders div").css({'background-color': settings.appearance.backgroundColor });
-    
+    App.setColors(settings)
+        
     AppView.on("before:show", function() {
       AppView.timerRegion.show(  new Views.Timer({site_url: settings.site_url }) );
       AppView.quoteRegion.show(  new Views.Quote({ model: settings.quote }) );

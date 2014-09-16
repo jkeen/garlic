@@ -1,6 +1,5 @@
 window._defaultData = { "default": {
     "backgroundColor": "#333333",
-    "borderColor": "#068cbf",
     "textColor": "#FFFFFF",
     "messages": [
       {
@@ -92,7 +91,12 @@ window._defaultData = { "default": {
     "backgroundColor": "#03a9e9",
     "messages": [
       {
+        "id": 1,
         "text": "Think about this while you're waiting for your tweets\u2026"
+      },
+      {
+        "id": 2,
+        "text": "You can't read all the tweets, and that's ok."
       }
     ],
   }
