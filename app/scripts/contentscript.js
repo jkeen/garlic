@@ -113,14 +113,14 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 });
 
 // Initialization sequence
-chrome.runtime.sendMessage({action: "getPageInfo"}, function(response) {
-  if (response.blocked) {
+chrome.runtime.sendMessage({action: "getPageInfo", referrer: document.referrer}, function(response) {
+  if (response.blocked && response.firstVisit) {
     chrome.runtime.sendMessage({action: "showDelay"}, function(data) {
       $frameUrl     = data.frame_url;
       $pageUrl      = data.page_url;
       $visitHistory = data.visit_history;
       
-      loadOverlay()
+      loadOverlay();
     });
   }
 });

@@ -79,6 +79,12 @@ window._defaultData = { "default": {
       }
     ]
   },
+  "mail.google.com": {
+    "backgroundColor":"#C9332A"
+  },
+  "quora.com": {
+    "backgroundColor":"#9DC55C"
+  },
   "reddit.com": {
     "backgroundColor":"#cee3f8",
     "textColor":"#333333"

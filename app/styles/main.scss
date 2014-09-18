@@ -1,8 +1,3 @@
-$padding: 20px;
-body {
-    padding: $padding;
-}
-
 body[tbd-garlic-settings-visible] > div:not(#tbd_garlic_settings_container) {
 /*  -webkit-filter: blur(3px);*/
 }
