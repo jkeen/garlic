@@ -10,8 +10,8 @@ App.module("Entities", function(Entities, App, Backbone, Marionette, $, _){
 
   var BaseCollection = Backbone.Collection.extend({ 
     getNextUnseen: function() {
-      var result = this.findWhere({seen: undefined});
-      
+      var results = this.where({seen: undefined});
+      var result = _.sample(results)
       if (result) result.markSeen();
       
       return result;
