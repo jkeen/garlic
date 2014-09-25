@@ -15,7 +15,7 @@ function loadOverlay() {
     
     $frameContainer = document.createElement('div');
     $frameContainer.setAttribute('id', 'tbd_garlic_container')
-    
+  
     var $frame = document.createElement('iframe');
     $frame.setAttribute('id', 'tbd_garlic_frame');
     $frame.setAttribute('src', $frameUrl);
@@ -23,11 +23,20 @@ function loadOverlay() {
     $frame.setAttribute('frameBorder', '0' );
     // f.setAttribute('style', 'display:none');
     $frame.setAttribute('allowtransparency', 'true');
-    
+  
     $frameContainer.appendChild($frame);
+        
+    function tryInsert() {
+      if (document.body) {
+        document.body.insertBefore($frameContainer, document.body.firstChild);
+        $frameContainer = document.getElementById("tbd_garlic_container");
+      }
+      else {
+        window.setTimeout(tryInsert, 20);
+      }
+    }
     
-    document.body.insertBefore($frameContainer, document.body.firstChild);
-    $frameContainer = document.getElementById("tbd_garlic_container");
+    tryInsert();
   }
 }
 

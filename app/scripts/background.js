@@ -123,13 +123,12 @@ function blockPage(pageUrl) {
 }
 
 function allowPage(pageUrl) {
-  delete _blockedPages[ getSiteUrl(pageUrl) ];
+  _blockedPages[ getSiteUrl(pageUrl) ] = false;
   saveBlockedPages();
 }
 
 function saveBlockedPages() {
   chrome.storage.sync.set({'_blockedPages': _blockedPages}, function() {
-    console.log("saved blocked pages");
   });
 }
 

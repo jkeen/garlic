@@ -22,7 +22,7 @@ body {
 }
 
 #garlic_overlay_container {
-  padding:60px;
+  padding:60px 45px 60px;
   opacity:0.98;
   position:absolute;
   top:0; left:0; right:0;
@@ -45,48 +45,69 @@ body {
     }
     
     .until {
+      margin-top:-13px;
       font-family:"AvenirNext";
-      font-size:24px;
+      font-size:22px;
     }
   }
   
   .message {
     font-family:"AvenirNext";
-    font-size:18px;
+    font-size:22px;
     margin-bottom:40px;
   }
   
   .quote {
-    background:transparent url('chrome-extension://__MSG_@@extension_id__/images/quote_icon.png') no-repeat top center;
+    background:transparent url('chrome-extension://__MSG_@@extension_id__/images/quote_icon.png') no-repeat center 25px;
     padding-top:50px;
     display:block;
     
     margin:auto auto;
     h3 {
       font-weight:normal;
-      font-size:48px;
+      font-size:36px;
       line-height:55px;
       font-style:italic;
-      font-family:Times;
+      font-family: Times;;
     }
     span {
-      font-size: 24px;
-      margin-top: 50px;
+      font-size: 22px;
+      margin-top: 28px;
       display: block;
+      font-family: Times;
     }
+    a {
+      display:inline-block;
+      text-decoration:underline;
+    }
+    
     span:before {
       content:"—";
     }
     
-    max-width:775px;
+    max-width:1100px;
+  }
+  
+  $footer_height: 20px;
+
+  .wrapper {
+    min-height: 100%;
+    height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
+    height: 100%;
+    margin-bottom: -$footer_height; /* the bottom margin is the negative value of the footer's height */
+    position:relative;
+  }
+
+  .footer, .push {
+    position:relative;
+    top:10px;
+    display:block;
+    height: $footer_height!important; /* .push must be the same height as .footer */
   }
 
   .footer {
     font-size:13px;
     text-align:right;
-    position:absolute;
-    bottom:50px;
-    right:50px;
     
     a {
       text-decoration:underline;
