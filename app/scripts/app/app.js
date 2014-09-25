@@ -98,7 +98,7 @@ App.reqres.setHandler("loadPageSettings", function(options) {
     settings.quotes = quoteCollection.toJSON();
 
     chrome.runtime.sendMessage({action: 'saveData', data: response}, function() {
-      console.log('saved updated stuff')
+
     })
   });
   
