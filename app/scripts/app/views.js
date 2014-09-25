@@ -12,13 +12,6 @@ App.module("Views", function(Views, App, Backbone, Marionette, $, _){
     
     initialize: function(options) {
       this.settings = options.settings;
-    },
-    
-    onShow: function() {
-      this.$el.css({
-        "background-color": this.settings.backgroundColor,
-        "color": this.settings.textColor
-      });
     }
   });
   

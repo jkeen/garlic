@@ -10,12 +10,13 @@ window._defaultData = { "default": {
     "quotes": [
       {
         "id": 1,
-        "text": "You'll become known for doing what you do. It's a simple saying, but it's true...The only way to start being asked to do something you want to do is to start doing that thing on your own",
-        "author": "Jonathan Harris"
+        "text": "You'll become known for doing what you do. It's a simple saying, but it's true...The only way to start being asked to do something you want to do is to start doing that thing on your own.",
+        "author": "Jonathan Harris",
+        "url": "http://thegreatdiscontent.com/interview/jonathan-harris"
       },
       {
         "id": 2,
-        "text": "Whenever you are asked if you can do a job, tell 'em, 'Certainly I can!' Then get busy and find out how to do it.",
+        "text": "Whenever you are asked if you can do a job, tell 'em, \"Certainly I can!\" Then get busy and find out how to do it.",
         "author": "Theodore Roosevelt"
       },
       {
@@ -25,18 +26,13 @@ window._defaultData = { "default": {
       },
       {
         "id": 4,
-        "text": "Concentrate all your thoughts upon the work in hand. The Sun's rays do not burn until brought to a focus",
+        "text": "Concentrate all your thoughts upon the work in hand. The Sun's rays do not burn until brought to a focus.",
         "author": "Alexander Graham Bell"
       },
       {
         "id": 5,
         "text": "Nothing is less productive than to make more efficient what should not be done at all.",
         "author": "Peter Drucker"
-      },
-      {
-        "id": 6,
-        "text": "Fear of what other people will think is the single most paralyzing dynamic in business and in life. The best moment of my life…was the day I realized that I no longer give a damn what anybody thinks. That’s enormously liberating and freeing, and it’s the only way to live your life and do your business.",
-        "author": "Cindy Gallop"
       },
       {
         "id": 7,
@@ -62,7 +58,60 @@ window._defaultData = { "default": {
         "id": 11,
         "text": "While one person hesitates because he feels inferior, the other is busy making mistakes and becoming superior.",
         "author": "Henry C. Link"
+      },
+      {
+        "id": 12,
+        "text": "The price of anything is the amount of life you exchange for it.",
+        "author": "Henry David Thoreau"
+      },
+      {
+        "id": 13,
+        "text": "Whatever the problem, be part of the solution. Don’t just sit around raising questions and pointing out obstacles.",
+        "author": "Tina Fey"
+      },
+      {
+        "id": 14,
+        "text": "You don’t get to decide the truth. Other people have their own experiences, just as valid. This is easy to forget. Your slice of life seems so large and unmistakeable, like a mirage of wholeness from where you stand. But it is your job to know better and not confuse your small piece for the whole, even if you sometimes forget. Life is big—much bigger than just yours. This is the only note to self: other people are real. That’s all there is to learn.",
+        "author": "Frank Chimero"
+      },
+      {
+        "id": 15,
+        "text": "We have these brief lives, and our only real choice is how we will fill them. Your attention is precious. Don’t squander it. Don’t throw it away. Don’t let companies and products steal it from you. Don’t let advertisers trick you into lusting after things you don’t need. Don’t let the media convince you to covet the lives of celebrities. Own your attention — it’s all you really have.",
+        "author": "Jonathan Harris",
+        "url": "http://transom.org/2014/jonathan-harris/"
+      },
+      {
+        "id": 16,
+        "text": "Knowledge is power, but enthusiasm pulls the switch.",
+        "author": "Ivern Ball"
+      },
+      {
+        "id": 17,
+        "text": "I hope you live a life you're proud of.",
+        "author": "F. Scott Fitzgerald"
+      },
+      {
+        "id": 18,
+        "text": "Don’t ask what the world needs. Ask what makes you come alive. Because what the world needs is people who have come alive.",
+        "author": "Howard Thurman"
+      },
+      {
+        "id": 19,
+        "text": "I do not think there is any thrill that can go through the human heart like that felt by the inventor as he sees some creation of the brain unfold to success… Such emotions make a man forget food, sleep, friends, love, everything",
+        "author": "Nikola Tesla"
+      },
+      {
+        "id": 20,
+        "text": "If you took one-tenth the energy you put into complaining and applied it to solving the problem, you’d be surprised by how well things can work out… Complaining does not work as a strategy. We all have finite time and energy. Any time we spend whining is unlikely to help us achieve our goals. And it won’t make us happier.",
+        "author":" Randy Pausch",
+        "url": "http://www.youtube.com/watch?v=ji5_MqicxSo"
+      },
+      {
+        "id": 21,
+        "text": "Everybody is a genius. But if you judge a fish by its ability to climb a tree, it will live its whole life believing that it is stupid.",
+        "author": "Albert Einstein"
       }
+      
     ],
     "textColor": "#FFFFFF"
   },
@@ -76,6 +125,10 @@ window._defaultData = { "default": {
       {
         "id": 2,
         "text": "If you didn't see this for a week, would it matter?"
+      },
+      {
+        "id": 3,
+        "text": "Why are you wondering what other people are doing? What are you doing?"
       }
     ]
   },
@@ -86,12 +139,16 @@ window._defaultData = { "default": {
     "backgroundColor":"#9DC55C"
   },
   "reddit.com": {
-    "backgroundColor":"#cee3f8",
-    "textColor":"#333333"
+    "backgroundColor":"#336699",
+    "messages": [
+      {
+        "id": 1,
+        "text": "Please wait. Important gifs are just a few moments away."
+      }
+    ]
   },
   "news.ycombinator.com": {
     "backgroundColor": "#FF6600",
-    "textColor": "#FFF"
   },
   "twitter.com": {
     "backgroundColor": "#03a9e9",

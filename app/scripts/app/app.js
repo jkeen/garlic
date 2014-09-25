@@ -23,8 +23,15 @@ App.setColors = function(settings) {
   var borderColor           = c.isLight() ? c.darken() : c.lighten();
   var backgroundBorderColor = c2.isLight() ? c2.lighten() : c2.darken();
   
-  $(".surrounding-borders").css({'border-color': backgroundBorderColor.toHexString() });
-  $(".surrounding-borders div").css({'background-color': borderColor.toHexString() });
+  var styleRules = [
+    "#garlic_overlay_container { background-color:" + tinycolor(appearance.backgroundColor).toHexString() + "!important;}",
+    "* { color:" + tinycolor(appearance.textColor).toHexString() + "!important;}",
+    ".surrounding-borders { border-color:" + backgroundBorderColor.toHexString() + "!important;}",
+    ".surrounding-borders > div { background-color:" + borderColor.toHexString() + "!important;}",
+    "::selection { background: " + backgroundBorderColor.brighten() + "!important;}"
+  ]
+
+  $('<style>'+ styleRules.join("") +'</style>').appendTo('head');
 }
 
 App.chooseMessages = function(site, siteSettings, defaultSettings) {

@@ -44,7 +44,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   }
   
 });
-//
 // chrome.history.onVisited.addListener(function(item) {
 //
 //   var url = item.url;
@@ -56,9 +55,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 //     })
 //   }
 // });
-
-
-
+//
 
 chrome.browserAction.onClicked.addListener(function actionClicked(tab) {
   chrome.tabs.sendMessage(tab.id, {action: "settings", url: chrome.extension.getURL("popup.html")}, function(response) {
@@ -111,7 +108,6 @@ function isPageBlocked(pageUrl) {
   
   return _blockedPages[getSiteUrl(pageUrl)];
 }
-
 
 function firstVisit(current, previous) {
   return (getSiteUrl(current) != getSiteUrl(previous));

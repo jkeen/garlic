@@ -23,17 +23,20 @@
         </div>
         
         <script type="x-tmpl-mustache" id="app_template">
-            <div id="timer_region">
+            <div class="wrapper">
+                <div id="timer_region">
             
-            </div>
-            <div id="message_region">
+                </div>
+                <div id="message_region">
                 
-            </div>
+                </div>
 
-            <div id="quote_region">
+                <div id="quote_region">
                 
-            </div>
+                </div>
 
+                <div class="push"></div>
+            </div>
             <div class="footer">
                 <a href="http://tbd.works" target="_blank">TBD</a> wants you to stay productive.
             </div>
@@ -53,10 +56,14 @@
         </script>
         <script id="quote_template" type="x-tmpl-mustache">
             <h3>{{text}}</h3>
-            <span>{{ author }}</span>
+            {{^url}}
+                <span>{{ author }}</span>
+            {{/url}}
+            {{#url}}
+                <span><a href="{{ url }}" target="_parent">{{ author }}</a></span>
+            {{/url}}
         </script>
-        
-        
+
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->

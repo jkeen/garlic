@@ -6,14 +6,6 @@
 @include font-face("Avenir", font-files("Avenir-Light.ttf"));
 @include font-face("AvenirNext", font-files("AvenirNext-Regular.ttf"));
 
-a:visited {
-  color:tint($highlight_color, 40%);
-}
-
-a:hover {
-  color:$highlight_color;
-}
-
 body {
   font-size: 16px;
   font-family: Avenir, Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -108,6 +100,7 @@ body {
   .footer {
     font-size:13px;
     text-align:right;
+    padding:0 15px;
     
     a {
       text-decoration:underline;

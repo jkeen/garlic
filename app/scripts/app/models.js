@@ -32,16 +32,11 @@ App.module("Entities", function(Entities, App, Backbone, Marionette, $, _){
   
   Entities.Quote = BaseModel.extend({
     defaults: {
-      site: "", // optional
-      message: "",
-      attribution: ""
     }
   });
 
   Entities.Message = BaseModel.extend({
     defaults: {
-      site: "", // optional
-      message: ""
     }
   });
 
