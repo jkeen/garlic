@@ -1,4 +1,5 @@
-window._defaultData = { "default": {
+window._defaultData = { 
+  "default": {
     "backgroundColor": "#333333",
     "textColor": "#FFFFFF",
     "messages": [
@@ -118,7 +119,7 @@ window._defaultData = { "default": {
       },
       {
         "id":23,
-        "text": "There’s a line between those who create things and those who destroy them. You have to figure out which side you’re on",
+        "text": "There’s a line between those who create things and those who destroy them. You have to figure out which side you’re on.",
         "author": "Tina Roth Eisenberg"
       },
       {
@@ -131,11 +132,12 @@ window._defaultData = { "default": {
     "textColor": "#FFFFFF"
   },
   "facebook.com": {
+    "default": true,
     "backgroundColor": "#394F8D",
     "messages": [
       {
         "id": 1,
-        "text": "Honestly though, when was the last time this site brought you JOY?"
+        "text": "Honestly though, when was the last time this site brought you <em>joy</em>?"
       },
       {
         "id": 2,
@@ -154,6 +156,7 @@ window._defaultData = { "default": {
     "backgroundColor":"#9DC55C"
   },
   "reddit.com": {
+    "default": true,
     "backgroundColor":"#336699",
     "messages": [
       {
@@ -166,6 +169,7 @@ window._defaultData = { "default": {
     "backgroundColor": "#FF6600",
   },
   "twitter.com": {
+    "default": true,
     "backgroundColor": "#03a9e9",
     "messages": [
       {

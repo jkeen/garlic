@@ -8,12 +8,49 @@
         <!-- endbower -->
         <!-- endbuild -->
         <!-- build:css styles/main.css -->
+        <link href="styles/options.css" rel="stylesheet">
         <link href="styles/main.css" rel="stylesheet">
         <!-- endbuild -->
     </head>
     <body>
-        <h1>'Allo, 'Allo!</h1>
+        <div class="callout-to-button">
+            <h4>
+                Control your unproductive urges by clicking on the Garlic icon when you're on a website that wastes your time.
+            </h4>
+            
+        </div>
+        <div class="wrapper">
+            <header>
+                <div class="logo">
+                    <h2>Garlic</h2>
+                    <h5>Protection from time vampires. </h5>
+                </div>
+            </header>
+            
+            
+            <div class="content">
+                <h3>Definitely Vampires</h3>
+                <p>We think you should keep Garlic on for these sites. I mean, look at those fangs. </p>
                 
+                <div class="settings">
+                    
+                </div>
+
+                <div class="footer">
+                    Put the sites that waste your time in their place. Brought to you by <a href="http://tbd.works" target="_blank">TBD &amp; Co</a>
+                </div>
+            </div>
+        </div>
+        
+        <script id="setting_row_template" type="x-tmpl-mustache">
+            <div>
+                <div class="activate-switch btn-group">
+                    <input type="checkbox" name="delay-this-site"/>
+                </div>
+                <h4>{{{ site_url }}}</h4>
+            </div>
+        </script>
+
         <!-- build:js scripts/vendor.js -->
         
         
@@ -32,6 +69,8 @@
         <!-- endbuild -->
 
         <!-- build:js scripts/options.js -->
+        <script src="scripts/app/setup.js"></script>
+        <script src="scripts/app/settings.js"></script>
         <script src="scripts/options.js"></script>
         <!-- endbuild -->
     </body>
