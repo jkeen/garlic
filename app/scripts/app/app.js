@@ -53,6 +53,7 @@ App.chooseMessages = function(site, siteSettings, defaultSettings) {
   var quote   = SiteQuotes.getNextUnseen() || DefaultQuotes.getNextUnseen() || SiteQuotes.getOldestSeen() || DefaultQuotes.getOldestSeen()
   var message = SiteMessages.getNextUnseen() || DefaultMessages.getNextUnseen() || SiteMessages.getOldestSeen() || DefaultMessages.getOldestSeen()
 
+  
   return {
     message: message,
     quote: quote

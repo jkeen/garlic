@@ -102,14 +102,29 @@ window._defaultData = { "default": {
       },
       {
         "id": 20,
-        "text": "If you took one-tenth the energy you put into complaining and applied it to solving the problem, you’d be surprised by how well things can work out… Complaining does not work as a strategy. We all have finite time and energy. Any time we spend whining is unlikely to help us achieve our goals. And it won’t make us happier.",
+        "text": "Complaining does not work as a strategy. We all have finite time and energy. Any time we spend whining is unlikely to help us achieve our goals. And it won’t make us happier.",
         "author":" Randy Pausch",
         "url": "http://www.youtube.com/watch?v=ji5_MqicxSo"
       },
       {
-        "id": 21,
-        "text": "Everybody is a genius. But if you judge a fish by its ability to climb a tree, it will live its whole life believing that it is stupid.",
-        "author": "Albert Einstein"
+        "id":21,
+        "text": "If you have a good idea, get it out there. For every idea I've realized, I have ten I sat on for a decade till someone else did it first. Write it. Shoot it. Publish it. Crochet it, sauté it, whatever. MAKE.",
+        "author": "Joss Whedon"
+      },
+      {
+        "id":22,
+        "text": "Writing is hard for every one of us... Coal mining is harder. Do you think miners stand around all day talking about how hard it is to mine for coal? They do not. They simply <em>dig</em>.",
+        "author": "Cheryl Strayd"
+      },
+      {
+        "id":23,
+        "text": "There’s a line between those who create things and those who destroy them. You have to figure out which side you’re on",
+        "author": "Tina Roth Eisenberg"
+      },
+      {
+        "id":24,
+        "text": "The people who are crazy enough to think they can change the world are the ones who do.",
+        "author": "Steve Jobs"
       }
       
     ],

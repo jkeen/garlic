@@ -50,17 +50,21 @@ body {
   }
   
   .quote {
-    background:transparent url('chrome-extension://__MSG_@@extension_id__/images/quote_icon.png') no-repeat center 25px;
-    padding-top:50px;
+    background:transparent url('chrome-extension://__MSG_@@extension_id__/images/quote_icon.png') no-repeat center 5px;
+    padding-top:20px;
     display:block;
     
     margin:auto auto;
     h3 {
       font-weight:normal;
-      font-size:36px;
-      line-height:55px;
+      font-size:33px;
+      line-height:45px;
       font-style:italic;
-      font-family: Times;;
+      font-family: Times;
+      
+      em {
+       font-weight:bold; 
+      }
     }
     span {
       font-size: 22px;

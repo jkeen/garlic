@@ -52,10 +52,10 @@
             <div class="until">until {{ site_url }}</div>
         </script>
         <script id="message_template" type="x-tmpl-mustache">
-            <p>{{ text }}</p>
+            <p>{{{ text }}}</p>
         </script>
         <script id="quote_template" type="x-tmpl-mustache">
-            <h3>{{text}}</h3>
+            <h3>{{{ text }}}</h3>
             {{^url}}
                 <span>{{ author }}</span>
             {{/url}}
