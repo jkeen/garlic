@@ -24,7 +24,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
   else if (request.action == 'getAllPageInfo') {
     // Used for the initial options screen
-    var settings = []
+    var settings = [];
     
     _.each(Object.keys(_blockedPages), function(site) {
       if (_blockedPages[site] === true) {

@@ -1,5 +1,7 @@
+@import "variables";
+
 html {
-  background-color: #474747;
+  background-color: $panel_body_color;
   padding:0;
   margin:0;
   height:100%;
@@ -15,12 +17,12 @@ body {
 }
 
 header {
-  background-color: #262626;
+  background-color: $panel_header_color;
   padding: 5px 10px;
   border-bottom: 1px solid #CCC;
   
   .logo {
-    background: #262626 url("chrome-extension://__MSG_@@extension_id__/images/garlic_logo_white.png") no-repeat 5px center;
+    background: transparent url("chrome-extension://__MSG_@@extension_id__/images/garlic_logo_white.png") no-repeat 5px center;
     padding-left: 60px;
     margin: 20px 0;
   }
@@ -61,4 +63,11 @@ button.close {
   position: absolute;
   right: 13px;
   top: 9px;
+}
+a {
+  color:$panel_link_color;
+}
+
+a:hover {
+  color:$panel_link_hover_color;
 }

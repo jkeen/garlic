@@ -109,7 +109,7 @@ window._defaultData = {
       },
       {
         "id":21,
-        "text": "If you have a good idea, get it out there. For every idea I've realized, I have ten I sat on for a decade till someone else did it first. Write it. Shoot it. Publish it. Crochet it, sauté it, whatever. MAKE.",
+        "text": "If you have a good idea, get it out there. For every idea I've realized, I have ten I sat on for a decade 'til someone else did it first. Write it. Shoot it. Publish it. Crochet it, sauté it, whatever. MAKE.",
         "author": "Joss Whedon"
       },
       {
@@ -126,10 +126,38 @@ window._defaultData = {
         "id":24,
         "text": "The people who are crazy enough to think they can change the world are the ones who do.",
         "author": "Steve Jobs"
+      },
+      {
+        "id":25,
+        "text": "Why don't you have ambition? Why? Have the greatest ambition possible. You want to be immortal? Fight to be immortal. You want to make the most fantastic art or movie? Try! If you fail, it's not important. We need to try.",
+        "author": "Alejandro Jodorowsky"
+      },
+      {
+        "id":26,
+        "text": "We often look to our devices for a sense of reassurance. Become more aware of the insecurity that pulls you away from the present. You cannot imagine what will be if you are constatly concerned with what already is.",
+        "publication": "Manage Your Day-To Day: Build Your Routine, Find Your Focus & Sharpen Your Creative Mind",
+        "author": "Scott Belsky",
+        "url": "http://www.amazon.com/Manage-Your-Day---Day-Creative/dp/1477800670/?_encoding=UTF8&camp=1789&creative=9325&linkCode=ur2&tag=tempolabs-20&linkId=PGIR64YU2ZRHT3RH"
+      },
+      {
+        "id":27,
+        "text": "With all the new sources of communication and amplification, don't let yourself be persuaded by the volume of the masses. Nothing should resonate more loudly than your own intuition.",
+        "author": "Scott Belsky",
+        "publication": "Manage Your Day-To Day: Build Your Routine, Find Your Focus & Sharpen Your Creative Mind",
+        "url": "http://www.amazon.com/Manage-Your-Day---Day-Creative/dp/1477800670/?_encoding=UTF8&camp=1789&creative=9325&linkCode=ur2&tag=tempolabs-20&linkId=PGIR64YU2ZRHT3RH"
       }
+
       
     ],
     "textColor": "#FFFFFF"
+  },
+  "espn.com": {
+    "messages": [
+      {
+        "id":1,
+        "text": "It's just a game."
+      }
+    ]
   },
   "facebook.com": {
     "default": true,
@@ -146,6 +174,14 @@ window._defaultData = {
       {
         "id": 3,
         "text": "Why are you wondering what other people are doing? What are you doing?"
+      },
+      {
+        "id": 4,
+        "text": "OMG, I wonder how many likes you got!?!?"
+      },
+      {
+        "id": 5,
+        "text": "Please wait. The illusion of social intimacy is being loaded."
       }
     ]
   },
@@ -153,6 +189,15 @@ window._defaultData = {
     "backgroundColor":"#C9332A"
   },
   "quora.com": {
+    "backgroundColor":"#9DC55C"
+  },
+  "instagram.com": {
+     "messages": [
+      {
+        "id":1,
+        "text": "Looking for food pictures? You hungry or something?"
+      }
+    ],
     "backgroundColor":"#9DC55C"
   },
   "reddit.com": {

@@ -1,4 +1,5 @@
 @import "compass/css3";
+@import "variables";
 
 
 @include font-face("Handwritten", font-files("AmaticSC-Regular.ttf"));
@@ -42,7 +43,7 @@ body {
 }
 
 .wrapper {
-  background-color: #474747;
+  background-color: $panel_body_color;
   width:450px;
   overflow:hidden;
   margin:40px auto;
@@ -74,12 +75,12 @@ body {
 }
 
 header {
-  background-color: #262626;
+  background-color: $panel_header_color;
   padding: 5px 10px;
   border-bottom: 1px solid #CCC;
   
   .logo {
-    background: #262626 url("chrome-extension://__MSG_@@extension_id__/images/garlic_logo_white.png") no-repeat 5px center;
+    background: transparent url("chrome-extension://__MSG_@@extension_id__/images/garlic_logo_white.png") no-repeat 5px center;
     padding-left: 60px;
     margin: 20px 0;
   }

@@ -1,9 +1,11 @@
+@import "variables";
+
 body[tbd-garlic-settings-visible] > div:not(#tbd_garlic_settings_container) {
 /*  -webkit-filter: blur(3px);*/
 }
 
 #tbd_garlic_settings_container {
-  background-color: #262626;
+  background-color: $panel_body_color;
   position:fixed;
   
   top:15px;
@@ -64,4 +66,12 @@ body[tbd-garlic-active] #tbd_garlic_container {
   background-color: transparent;
   width: 100%;
   height: 100%;
+}
+
+a {
+  color:$panel_link_color;
+}
+
+a:hover {
+  color:$panel_link_hover_color;
 }
