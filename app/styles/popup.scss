@@ -22,7 +22,7 @@ header {
   border-bottom: 1px solid #CCC;
   
   .logo {
-    background: transparent url("chrome-extension://__MSG_@@extension_id__/images/garlic_logo_white.png") no-repeat 5px center;
+    background: $panel_header_color url("chrome-extension://__MSG_@@extension_id__/images/garlic_logo_white.png") no-repeat 5px center;
     padding-left: 60px;
     margin: 20px 0;
   }
