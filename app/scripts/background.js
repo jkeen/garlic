@@ -119,6 +119,9 @@ function isPageExcluded(pageUrl) {
   if (pageUrl && pageUrl.match(/oauth/)) {
     return true;
   }
+  else if (pageUrl && pageUrl.match(/twitter\.com\/intent\/tweet/)) {
+    return true;
+  }
   
   return false;
 }

@@ -19,6 +19,14 @@ body[tbd-garlic-settings-visible] > div:not(#tbd_garlic_settings_container) {
   box-shadow: -3px 3px 5px #333;
   -webkit-transition: opacity 0.3s linear, top 0.2s ease-in, right 0.2s ease-in;
   transition: opacity 0.3s linear, top 0.2s ease-in, right 0.2s ease-in;
+
+  a {
+    color:$panel_link_color;
+  }
+
+  a:hover {
+    color:$panel_link_hover_color;
+  }
 }
 
 body[tbd-garlic-settings-visible] #tbd_garlic_settings_container{
@@ -66,12 +74,4 @@ body[tbd-garlic-active] #tbd_garlic_container {
   background-color: transparent;
   width: 100%;
   height: 100%;
-}
-
-a {
-  color:$panel_link_color;
-}
-
-a:hover {
-  color:$panel_link_hover_color;
 }
