@@ -1,7 +1,6 @@
 @import "compass/css3";
 @import "variables";
 
-
 @include font-face("Handwritten", font-files("AmaticSC-Regular.ttf"));
 
 html {
@@ -20,6 +19,13 @@ body {
   background-color:#EEE;
 }
 
+a {
+  color:$panel_link_color;
+}
+
+a:hover {
+  color:$panel_link_hover_color;
+}
 
 .callout-to-button {
   h4 {

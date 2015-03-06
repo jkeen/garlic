@@ -168,7 +168,13 @@ module.exports = function (grunt) {
                 options: {
                     cssDir: '<%= config.app %>/styles',
                     generatedImagesDir: '<%= config.app %>/images/generated',
-                    debugInfo: true
+                    debugInfo: false
+                }
+            },
+            server: {
+                options: {
+                  //set degbugInfo false to produce css code without sass debugInfo
+                  debugInfo: false
                 }
             },
             dist: {
